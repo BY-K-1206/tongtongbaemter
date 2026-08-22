@@ -1,0 +1,191 @@
+<!-- ============ SCREEN: HOME ============ -->
+  <section id="screen-home" class="screen">
+
+    <div id="home-navbar">
+      <div id="home-navbar-links">
+        <button type="button" class="home-navbar-link" id="btn-open-admin" title="관리자" hidden>관리자</button>
+        <button type="button" class="home-navbar-link" id="btn-open-login" title="계정">계정</button>
+        <button type="button" class="home-navbar-link" id="btn-open-settings" title="환경설정">환경설정</button>
+      </div>
+    </div>
+
+    <div id="home-hero">
+      <div id="home-hero-content">
+        <h1 id="home-hero-title">통문장을<br id="home-br">통째로 삼키다</h1>
+        <p id="home-hero-subtitle">통번역과 학생들의 공부법, 문장을 통으로 암기해 보세요.</p>
+        <div id="home-hero-cta-group">
+          <div id="home-hero-actions">
+            <button type="button" class="btn btn-primary btn-large nav-to-library" id="btn-hero-start-study">학습 시작하기</button>
+            <button type="button" class="btn btn-secondary btn-large" id="btn-hero-single">한문장 모드</button>
+            <button type="button" class="btn btn-ghost btn-large nav-to-register" id="btn-hero-register">지문 등록하기</button>
+          </div>
+          <div id="home-hero-stats">
+            <div class="hero-stat" id="home-hero-stat-sentences">
+              <span class="hero-stat-value" id="hero-stat-sentences">0</span>
+              <span class="hero-stat-label" id="home-hero-stat-label-sentences">누적 문장</span>
+            </div>
+            <div class="hero-stat" id="home-hero-stat-streak">
+              <span class="hero-stat-value" id="hero-stat-streak">0</span>
+              <span class="hero-stat-label" id="home-hero-stat-label-streak">연속 학습일</span>
+            </div>
+            <div class="hero-stat" id="home-hero-stat-score">
+              <span class="hero-stat-value" id="hero-stat-score">0</span>
+              <span class="hero-stat-label" id="home-hero-stat-label-score">평균 점수</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="home-hero-visual">
+        <span class="hero-blob hero-blob-1" aria-hidden="true" id="home-hero-blob"></span>
+        <span class="hero-blob hero-blob-2" aria-hidden="true" id="home-hero-blob-2"></span>
+        <span class="hero-blob hero-blob-3" aria-hidden="true" id="home-hero-blob-3"></span>
+        <div id="home-level-card">
+          <div id="home-boa" data-tier="1" aria-hidden="true">
+            <span id="home-boa-body"></span>
+            <span id="home-boa-head"></span>
+          </div>
+          <div id="home-level-ring" data-tier="1">
+            <span id="home-level-ring-number">1</span>
+          </div>
+          <p id="home-level-label">티어 1 · 응애 보아</p>
+          <p id="home-today-swallowed">오늘 삼킨 문장 0개</p>
+          <p id="home-today-retries">문장을 0회 써봤어요!</p>
+          <div id="home-level-progress-track">
+            <div id="home-level-progress-fill"></div>
+          </div>
+          <p id="home-level-progress-text">아직 학습 기록이 없어요</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="clay-panel" id="home-ranking-panel">
+      <div class="panel-header-row" id="home-panel-header-row">
+        <h2 id="home-h2">명예의 전당</h2>
+      </div>
+      <div id="home-ranking-scroll">
+        <ol id="home-ranking-list"></ol>
+      </div>
+      <p id="home-ranking-empty">아직 학습 기록이 없어요. 지문을 학습하고 첫 기록을 남겨보세요!</p>
+    </div>
+
+    <div class="clay-panel" id="home-recent-panel">
+      <div class="panel-header-row" id="home-panel-header-row-2">
+        <h2 id="home-h2-2">최근 학습 활동</h2>
+      </div>
+      <div id="home-recent-carousel" hidden>
+        <button type="button" id="btn-recent-prev" class="recent-nav-btn" aria-label="이전 학습 활동">‹</button>
+        <div id="home-recent-viewport">
+          <div id="home-recent-grid"></div>
+        </div>
+        <button type="button" id="btn-recent-next" class="recent-nav-btn" aria-label="다음 학습 활동">›</button>
+      </div>
+      <p id="home-recent-empty">파트나 한 문장을 끝내면 여기에 쌓여요.</p>
+    </div>
+
+    <div class="clay-panel" id="home-heatmap-panel">
+      <div class="panel-header-row" id="home-panel-header-row-3">
+        <h2 id="home-h2-3">학습 별자리</h2>
+        <span id="home-streak-badge">연속 0일</span>
+      </div>
+      <div id="home-heatmap-scroll">
+        <div id="home-heatmap-months" aria-hidden="true"></div>
+        <div id="home-heatmap-grid"></div>
+      </div>
+      <div id="home-heatmap-legend">
+        <span id="home-span">적음</span>
+        <span class="heatmap-cell level-0" title="0문장" id="home-heatmap-cell"></span>
+        <span class="heatmap-cell level-1" title="1–2문장" id="home-heatmap-cell-2"></span>
+        <span class="heatmap-cell level-2" title="3–5문장" id="home-heatmap-cell-3"></span>
+        <span class="heatmap-cell level-3" title="6–9문장" id="home-heatmap-cell-4"></span>
+        <span class="heatmap-cell level-4" title="10문장+" id="home-heatmap-cell-5"></span>
+        <span id="home-span-2">많음</span>
+      </div>
+    </div>
+
+    <div class="clay-panel" id="home-daily-report-panel">
+      <div class="panel-header-row" id="daily-report-header">
+        <div id="daily-report-title-block">
+          <h2 id="home-h2-4">오늘의 학습 리포트</h2>
+        </div>
+        <div id="daily-report-header-actions">
+          <div id="daily-report-ratio" role="group" aria-label="저장 비율">
+            <button type="button" class="daily-report-ratio-btn is-active" data-ratio="1:1" id="btn-report-ratio-1-1">1:1</button>
+            <button type="button" class="daily-report-ratio-btn" data-ratio="3:4" id="btn-report-ratio-3-4">3:4</button>
+            <button type="button" class="daily-report-ratio-btn" data-ratio="16:9" id="btn-report-ratio-16-9">16:9</button>
+          </div>
+          <div id="daily-report-save-row" hidden>
+            <button type="button" id="btn-download-daily-report" class="btn btn-primary btn-small">이미지로 저장</button>
+          </div>
+        </div>
+      </div>
+
+      <p id="home-daily-report-empty">아직 학습 기록이 없어요. 학습을 시작하고 오늘의 리포트를 채워보세요!</p>
+
+      <div id="daily-report-card-stage" hidden>
+      <div id="home-daily-report-card" data-ratio="1:1">
+        <span class="daily-report-blob daily-report-blob-1" aria-hidden="true" id="home-daily-report-blob"></span>
+        <span class="daily-report-blob daily-report-blob-2" aria-hidden="true" id="home-daily-report-blob-2"></span>
+        <span class="daily-report-glass-shine" aria-hidden="true" id="home-daily-report-shine"></span>
+
+        <div id="daily-report-card-header">
+          <span id="daily-report-card-brand">통통뱀터</span>
+          <span id="daily-report-card-date">2026.01.01</span>
+        </div>
+
+        <h3 id="daily-report-card-title">오늘도 통문장을<br id="home-br-2">통째로 삼켰어요</h3>
+
+        <div id="daily-report-card-stats">
+          <div class="daily-report-stat" id="home-daily-report-stat">
+            <span class="daily-report-stat-value" id="daily-report-time">0분</span>
+            <span class="daily-report-stat-label" id="home-daily-report-stat-label">학습 시간</span>
+          </div>
+          <div class="daily-report-stat" id="home-daily-report-stat-2">
+            <span class="daily-report-stat-value" id="daily-report-sentences">0개</span>
+            <span class="daily-report-stat-label" id="home-daily-report-stat-label-2">학습한 문장</span>
+          </div>
+          <div class="daily-report-stat" id="home-daily-report-stat-3">
+            <span class="daily-report-stat-value" id="daily-report-retries">0회</span>
+            <span class="daily-report-stat-label" id="home-daily-report-stat-label-3">시도</span>
+          </div>
+        </div>
+
+        <div id="daily-report-card-study">
+          <p id="daily-report-study-title">오늘 공부한 내용</p>
+          <div id="daily-report-study-single" hidden>
+            <p class="daily-report-study-label" id="home-daily-report-study-label">한문장 모드</p>
+            <p class="daily-report-study-text" id="daily-report-study-single-text"></p>
+          </div>
+          <div id="daily-report-study-passage" hidden>
+            <p class="daily-report-study-label" id="home-daily-report-study-label-2">지문 모드</p>
+            <ul id="daily-report-study-passage-list"></ul>
+          </div>
+          <p id="daily-report-study-empty" hidden>오늘 완료한 학습 세션이 아직 없어요.</p>
+        </div>
+
+        <div id="daily-report-card-words">
+          <p id="daily-report-words-title">오늘 자주 틀린 단어</p>
+          <div id="daily-report-wordcloud" aria-label="오늘 자주 틀린 단어"></div>
+          <p id="daily-report-words-empty">오늘은 실수한 단어가 없어요. 완벽해요!</p>
+        </div>
+
+        <p id="daily-report-card-tag">#통통뱀터 #통문장삼키기</p>
+      </div>
+      </div>
+    </div>
+
+    <div id="home-cta-banner">
+      <div id="home-cta-text">
+        <p id="home-cta-eyebrow">TODAY'S CHALLENGE</p>
+        <h2 id="home-cta-title">오늘도 한 문장, 보아뱀을 키워보세요</h2>
+      </div>
+      <div id="home-cta-actions">
+        <button type="button" class="btn btn-primary btn-large nav-to-library" id="btn-cta-start-study">학습하러 가기</button>
+        <button type="button" class="btn btn-secondary btn-large" id="btn-cta-single">한문장 모드</button>
+      </div>
+    </div>
+  </section>
+
+
+<!-- live-server-inject-anchor: keep Live Server out of inline SVG -->
+<body hidden aria-hidden="true" id="live-server-inject-body-home"></body>

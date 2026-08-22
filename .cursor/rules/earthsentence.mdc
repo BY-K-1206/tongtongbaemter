@@ -1,0 +1,18 @@
+---
+description: 통통뱀터 항상 지킬 원칙 — UI/흐름/저장/HTML ID
+alwaysApply: true
+---
+
+# 통통뱀터 — Always-on principles
+
+- **브랜드**: 서비스명 **통통뱀터**. 통문장을 삼키는 보아뱀 — 공부할수록 성장.
+- **학습 위계**: 지문 → 로드맵(1) → 파트(일일 분량) → 스텝 1·2·3. 상세는 `roadmap-hierarchy.mdc`.
+- **HTML IDs**: 의미 있는 UI 요소에는 descriptive `id`를 붙인다.
+- **등록 ≠ 학습**: 지문 CRUD는 등록 흐름만. 학습 목록은 선택·시작만.
+- **등록 흐름**: 홈 → 등록 목록 → 「추가하기」로만 폼. 저장/취소 후 목록 복귀.
+- **한→영 수정**: 한글·영어 둘 다 한 화면에 수정 가능. 한글 고친 뒤 「다시 번역」버튼 제공. 난이도는 사용자 별점(1–5).
+- **디자인**: Storybook parchment (양피지·라벤더·세이지). 히어로 오버레이/카드 남발 금지.
+- **데이터**: UI는 `AppStorage` 파사드만 호출(async). 기본 구현은 localStorage (`domain.js` + `store-local.js` + `storage.js`). DB 교체는 AppDataStore 구현 교체.
+- **문장 완료 카운트**: 스텝 3 클리어 시에만 +1.
+- **플랜 파일**: 사용자 플랜 md는 직접 수정하지 않음.
+- **상세**: `.cursor/skills/earthsentence/SKILL.md`, `docs/CONTEXT.md`, `feedback/*.md`

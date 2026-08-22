@@ -1,0 +1,26 @@
+<!-- ============ SCREEN: ROADMAP (지문당 1 · 파트 경로) ============ -->
+  <section id="screen-roadmap" class="screen">
+    <div id="roadmap-top-bar">
+      <button id="btn-back-library-from-roadmap" class="btn btn-ghost btn-small" type="button">&larr; 지문 목록</button>
+    </div>
+    <div class="clay-panel" id="roadmap-header-panel">
+      <div id="roadmap-header-row">
+        <div id="roadmap-header-copy">
+          <h2 id="roadmap-doc-title">지문 제목</h2>
+          <p id="roadmap-meta">하루 3문장씩 도전! (0/0 완료)</p>
+        </div>
+        <button type="button" id="btn-roadmap-sentences" class="btn btn-secondary btn-small" aria-expanded="false" aria-controls="roadmap-sentences-panel">전체 문장 보기</button>
+      </div>
+      <div id="roadmap-sentences-panel" hidden>
+        <p id="roadmap-sentences-hint">펼친 책처럼 이어 읽고, 외운 문장에만 형광펜이 칠해져 있어요.</p>
+        <div id="roadmap-sentences-list"></div>
+      </div>
+    </div>
+    <div id="roadmap-scroll">
+      <div id="roadmap-path" aria-label="학습 로드맵"></div>
+    </div>
+  </section>
+
+
+<!-- live-server-inject-anchor: keep Live Server out of inline SVG -->
+<body hidden aria-hidden="true" id="live-server-inject-body-roadmap"></body>

@@ -1,0 +1,53 @@
+<!-- ============ SCREEN: SINGLE (한문장 채팅) ============ -->
+  <section id="screen-single" class="screen">
+    <div id="single-top-bar">
+      <button id="btn-back-home-from-single" class="btn btn-ghost btn-small" type="button">&larr; 홈</button>
+      <h2 id="single-title">한문장 모드</h2>
+      <button id="btn-open-vault" class="btn btn-secondary btn-small" type="button">문장함</button>
+    </div>
+
+    <div id="single-chat-log" aria-live="polite"></div>
+
+    <div id="single-composer">
+      <label id="single-chat-input-label" class="sr-only" for="single-chat-input">문장 입력</label>
+      <div id="single-translate-guidance" hidden>
+        <div class="single-translate-guidance-item" id="single-translate-tone-wrap">
+          <label class="sr-only" for="single-translate-tone" id="single-sr-only">톤</label>
+          <select id="single-translate-tone" aria-label="번역 톤">
+            <option value="" selected id="single-option">톤 · 선택 안 함</option>
+            <option value="natural" id="single-option-2">자연스러운 구어체</option>
+            <option value="formal" id="single-option-3">격식 있는 문어체</option>
+            <option value="news" id="single-option-4">뉴스·시사 톤</option>
+            <option value="simple" id="single-option-5">쉽고 친절한 학습용</option>
+            <option value="literary" id="single-option-6">문학·서정적</option>
+            <option value="business" id="single-option-7">비즈니스·공식</option>
+            <option value="genz" id="single-option-8">Gen-Z Chat (idk/tbh)</option>
+            <option value="rap" id="single-option-9">Rap / Hype (Yo / Flex)</option>
+            <option value="royal" id="single-option-10">Royal / Princess (Shakespeare)</option>
+            <option value="victorian" id="single-option-11">Victorian Scholar (Old English)</option>
+            <option value="tsundere" id="single-option-12">Anime Tsundere (Baka!)</option>
+          </select>
+        </div>
+        <div class="single-translate-guidance-item" id="single-translate-topic-wrap">
+          <label class="sr-only" for="single-translate-topic" id="single-sr-only-2">주제</label>
+          <input type="text" id="single-translate-topic" placeholder="원하는 번역에 대한 부연 설명" maxlength="40" autocomplete="off" aria-label="번역 주제">
+        </div>
+      </div>
+      <div id="single-chat-field">
+        <textarea id="single-chat-input" rows="1" placeholder="한글 또는 영어를 500자 미만으로 적어주세요." maxlength="500"></textarea>
+        <button type="button" class="single-mic-btn" id="btn-single-mic" aria-pressed="false" title="음성 입력" aria-label="음성 입력">
+          <svg class="single-mic-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" id="single-single-mic-icon">
+            <path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z" id="single-path"/>
+          </svg>
+        </button>
+        <button type="button" class="single-send-btn" id="btn-single-send" title="보내기" aria-label="보내기">
+          <svg class="single-send-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" id="single-single-send-icon">
+            <path fill="currentColor" d="M8.5 5.5 15 12l-6.5 6.5-1.4-1.4L12.2 12 7.1 6.9z" id="single-path-2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+<!-- live-server-inject-anchor: keep Live Server out of inline SVG -->
+<body hidden aria-hidden="true" id="live-server-inject-body-single"></body>

@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.env.*
+*.log
+node_modules/
+
+# Impeccable local cache + vendored skill copy
+.impeccable/hook.cache.json
+.impeccable/config.local.json
+.impeccable/mocks/
+.cursor/skills/impeccable/

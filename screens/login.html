@@ -1,0 +1,37 @@
+<!-- ============ SCREEN: LOGIN ============ -->
+  <section id="screen-login" class="screen">
+    <div id="login-top-bar">
+      <button id="btn-back-home-from-login" class="btn btn-ghost btn-small" type="button">&larr; 홈</button>
+      <h2 id="login-title">계정</h2>
+    </div>
+
+    <div class="clay-panel" id="login-panel">
+      <header id="login-header">
+        <p id="login-eyebrow">ACCOUNT</p>
+        <h1 id="login-heading">로그인</h1>
+        <p id="login-subtitle">기기 간 동기화를 위해 로그인하세요. 지금은 이 브라우저에만 저장됩니다.</p>
+      </header>
+
+      <form id="login-form" autocomplete="on">
+        <label class="login-field" id="login-email-label" for="login-email">이메일
+          <input id="login-email" type="email" name="email" required autocomplete="username" placeholder="you@example.com">
+        </label>
+        <label class="login-field" id="login-password-label" for="login-password">비밀번호
+          <input id="login-password" type="password" name="password" required autocomplete="current-password" placeholder="4자 이상" minlength="4">
+        </label>
+        <p id="login-status" class="info-text" hidden></p>
+        <div id="login-actions">
+          <button id="btn-login-submit" class="btn btn-primary" type="submit">로그인</button>
+          <button id="btn-login-signup" class="btn btn-secondary" type="button">회원가입</button>
+        </div>
+      </form>
+
+      <p id="login-guest-row">
+        <button id="btn-login-skip" class="btn btn-ghost btn-small" type="button">게스트로 계속하기</button>
+      </p>
+      <p id="login-seed-hint" class="info-text">로컬 시드 관리자: admin@ttbt.local / admin</p>
+    </div>
+  </section>
+
+<!-- live-server-inject-anchor: keep Live Server out of inline SVG -->
+<body hidden aria-hidden="true" id="live-server-inject-body-login"></body>

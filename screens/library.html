@@ -1,0 +1,28 @@
+<!-- ============ SCREEN: LIBRARY (등록된 지문 중 학습할 것 선택) ============ -->
+  <section id="screen-library" class="screen">
+    <div id="library-top-bar">
+      <button id="btn-back-home-from-library" class="btn btn-ghost btn-small" type="button">&larr; 홈</button>
+      <h2 id="library-title">학습할 지문을 선택하세요</h2>
+    </div>
+
+    <div id="library-toolbar">
+      <input type="search" id="library-search" placeholder="제목·태그 검색" autocomplete="off">
+      <select id="library-sort" aria-label="정렬 기준">
+        <option value="newest" selected id="library-option">등록일 최신순</option>
+        <option value="oldest" id="library-option-2">등록일 오래된순</option>
+        <option value="hardest" id="library-option-3">난이도 어려운순</option>
+        <option value="easiest" id="library-option-4">난이도 쉬운순</option>
+      </select>
+    </div>
+
+    <div class="clay-panel" id="library-empty" hidden>
+      <p id="library-empty-text">아직 등록된 지문이 없어요.</p>
+      <button id="btn-goto-register-from-library" class="btn btn-primary nav-to-register" type="button">지문 등록하러 가기</button>
+    </div>
+
+    <div id="library-list"></div>
+  </section>
+
+
+<!-- live-server-inject-anchor: keep Live Server out of inline SVG -->
+<body hidden aria-hidden="true" id="live-server-inject-body-library"></body>

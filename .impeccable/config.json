@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "layout-transition",
+        "value": "width",
+        "createdAt": "2026-08-14T10:30:27.378Z",
+        "reason": "Progress bar fills (study gauge / level track) intentionally animate width; transform cannot express fill ratio without rewriting markup."
+      },
+      {
+        "rule": "layout-transition",
+        "value": "transition: width",
+        "createdAt": "2026-08-14T10:31:05.788Z",
+        "reason": "Progress bar fills intentionally animate width (study gauge / level tracks)."
+      }
+    ]
+  }
+}

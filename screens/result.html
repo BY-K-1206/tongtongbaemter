@@ -1,0 +1,42 @@
+<!-- ============ SCREEN: RESULT ============ -->
+  <section id="screen-result" class="screen">
+    <div class="clay-panel" id="result-panel">
+      <p id="result-eyebrow">SESSION COMPLETE</p>
+      <h2 id="result-title">오늘의 암기 세션이 끝났습니다</h2>
+
+      <div id="result-tier-display">
+        <span id="result-tier" class="tier-badge" data-tier="1">TIER 1</span>
+      </div>
+
+      <p id="result-rank-note" hidden></p>
+
+      <div id="result-stats">
+        <div class="result-stat-item" id="result-stat-score">
+          <span class="result-stat-label" id="result-result-stat-label">점수</span>
+          <span class="result-stat-value" id="result-score">0</span>
+        </div>
+        <div class="result-stat-item" id="result-stat-wpm">
+          <span class="result-stat-label" id="result-result-stat-label-2">평균 WPM</span>
+          <span class="result-stat-value" id="result-wpm">0</span>
+        </div>
+        <div class="result-stat-item" id="result-stat-accuracy">
+          <span class="result-stat-label" id="result-result-stat-label-3">평균 정확도</span>
+          <span class="result-stat-value" id="result-accuracy">0%</span>
+        </div>
+        <div class="result-stat-item" id="result-stat-sentences">
+          <span class="result-stat-label" id="result-result-stat-label-4">완료한 문장</span>
+          <span class="result-stat-value" id="result-sentence-count">0</span>
+        </div>
+      </div>
+
+      <div id="result-actions">
+        <button id="btn-restart-same" class="btn btn-secondary" type="button">같은 지문 다시 학습</button>
+        <button id="btn-restart-new" class="btn btn-primary" type="button">다른 지문 학습하기</button>
+        <button id="btn-goto-home-from-result" class="btn btn-ghost" type="button">홈으로</button>
+      </div>
+    </div>
+  </section>
+
+
+<!-- live-server-inject-anchor: keep Live Server out of inline SVG -->
+<body hidden aria-hidden="true" id="live-server-inject-body-result"></body>

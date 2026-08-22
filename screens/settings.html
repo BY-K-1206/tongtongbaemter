@@ -1,0 +1,44 @@
+<!-- ============ SCREEN: SETTINGS ============ -->
+  <section id="screen-settings" class="screen">
+    <div id="settings-top-bar">
+      <button id="btn-back-home-from-settings" class="btn btn-ghost btn-small" type="button">&larr; 홈</button>
+      <h2 id="settings-title">환경설정</h2>
+    </div>
+
+    <div class="clay-panel" id="settings-account-panel">
+      <header id="settings-account-header">
+        <p id="settings-account-eyebrow">ACCOUNT</p>
+        <h1 id="settings-account-heading">계정</h1>
+        <p id="settings-account-status">게스트 · 이 기기만 사용 중</p>
+      </header>
+      <div id="settings-account-actions">
+        <button id="btn-settings-open-login" class="btn btn-secondary" type="button">로그인 / 가입</button>
+        <button id="btn-settings-open-admin" class="btn btn-ghost" type="button" hidden>관리자</button>
+        <button id="btn-settings-sign-out" class="btn btn-ghost" type="button" hidden>로그아웃</button>
+      </div>
+    </div>
+
+    <div class="clay-panel" id="settings-panel">
+      <header id="settings-header">
+        <h1 id="settings-heading">번역 엔진</h1>
+        <p id="settings-subtitle">지금 쓸 번역기를 고르세요. API 키는 이 브라우저에만 저장됩니다.</p>
+      </header>
+
+      <div id="settings-body">
+        <div id="settings-provider-root">
+          <div id="settings-provider-toggles" role="radiogroup" aria-label="번역 제공자"></div>
+          <div id="settings-provider-panels"></div>
+        </div>
+
+        <p id="settings-translate-status" class="info-text" hidden></p>
+
+        <div id="settings-actions">
+          <button id="btn-save-translate-settings" class="btn btn-primary" type="button">저장</button>
+          <button id="btn-test-translate-settings" class="btn btn-secondary" type="button">번역 테스트</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- live-server-inject-anchor: keep Live Server out of inline SVG -->
+<body hidden aria-hidden="true" id="live-server-inject-body-settings"></body>

@@ -1,0 +1,94 @@
+<!-- ============ SCREEN: STUDY ============ -->
+  <section id="screen-study" class="screen">
+    <div id="study-top-bar">
+      <button id="btn-back-to-library" class="btn btn-ghost btn-small" type="button">&larr; 로드맵</button>
+
+      <div id="study-progress">
+        <span id="study-paragraph-indicator">문단 1</span>
+        <span id="study-sentence-indicator">문장 1 / 1</span>
+      </div>
+    </div>
+
+    <p id="study-mode-banner" data-mode="mark" hidden>Part 1 · 문장 학습</p>
+    <div id="study-gauge-panel" class="clay-panel">
+      <div id="study-tier-row">
+        <span id="study-tier-badge" class="tier-badge" data-tier="1">TIER 1</span>
+        <div id="study-metrics">
+          <span id="study-timer-value">00:00.000</span>
+          <span id="study-wpm-value">0 WPM</span>
+          <span id="study-accuracy-value">정확도 0%</span>
+          <span id="study-score-value">점수 0</span>
+        </div>
+      </div>
+      <div id="study-gauge-track">
+        <div id="study-gauge-fill"></div>
+      </div>
+    </div>
+
+    <div id="study-main-panel" class="clay-panel">
+
+      <div id="study-mode-row">
+        <div id="study-step-tabs" role="list">
+          <span class="step-chip active" id="step-chip-1" data-step="1">Step 1. 보고 따라쓰기</span>
+          <span class="step-chip" id="step-chip-2" data-step="2">Step 2. 첫 글자만 보고 쓰기</span>
+          <span class="step-chip" id="step-chip-3" data-step="3">Step 3. 아무것도 안 보고 쓰기</span>
+        </div>
+
+        <div id="study-toggle-group">
+          <label class="toggle-label" id="auto-play-row">
+            <input type="checkbox" id="toggle-auto-play" checked>
+            <span id="study-auto-play-label-text">자동 재생</span>
+          </label>
+          <label class="toggle-label" id="listen-and-type-row">
+            <input type="checkbox" id="toggle-listen-and-type">
+            <span id="study-listen-and-type-label-text">Listen &amp; Type</span>
+          </label>
+        </div>
+      </div>
+
+      <div id="study-work-area">
+        <div id="study-sentence-display">
+          <div id="study-sentence-copy">
+            <p id="study-sentence-text"></p>
+            <p id="study-sentence-translation" hidden></p>
+          </div>
+          <button id="btn-replay-audio" class="study-replay-badge" type="button" title="문장 다시 듣기">다시 듣기</button>
+        </div>
+
+        <div id="study-input-row">
+          <div id="study-word-boxes"></div>
+          <div id="study-input-actions">
+            <button id="btn-study-mic" class="btn-icon study-mic-btn" type="button" aria-pressed="false" aria-label="영어로 말해 입력" title="영어로 말해 입력">
+              <svg class="study-mic-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" id="study-study-mic-icon">
+                <path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z" id="study-path"/>
+              </svg>
+            </button>
+            <button id="btn-study-submit" class="study-send-btn" type="button" title="제출" aria-label="제출">
+              <svg class="study-send-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" id="study-study-send-icon">
+                <path fill="currentColor" d="M3.4 20.6 21 12 3.4 3.4l-.1 6.8L15 12 3.3 13.8l.1 6.8z" id="study-path-2"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="study-feedback" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div id="study-boss-intro" hidden>
+      <div id="study-boss-intro-backdrop"></div>
+      <div id="study-boss-intro-panel">
+        <span class="study-boss-star" id="study-boss-star-1" aria-hidden="true"></span>
+        <span class="study-boss-star" id="study-boss-star-2" aria-hidden="true"></span>
+        <span class="study-boss-star" id="study-boss-star-3" aria-hidden="true"></span>
+        <span class="study-boss-star" id="study-boss-star-4" aria-hidden="true"></span>
+        <h2 id="study-boss-intro-title">잘했어요!</h2>
+        <p id="study-boss-intro-text">방금 외운 문장을 힌트 없이 이어서 써볼까요?</p>
+        <button type="button" class="btn btn-primary" id="study-boss-intro-start">이어서 쓰기</button>
+      </div>
+    </div>
+  </section>
+
+
+<!-- live-server-inject-anchor: keep Live Server out of inline SVG -->
+<body hidden aria-hidden="true" id="live-server-inject-body-study"></body>
