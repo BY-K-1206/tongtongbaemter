@@ -69,7 +69,13 @@ UI는 `window.AppStorage`만 호출한다. 영속 I/O는 전부 `Promise`를 반
 - 「지금 외우기」→ `studyMode: 'single'` (1·2·3만, 보스 없음) → 완료 시 `memorized` + 「학습 완료!」배지.
 - 문장함에서 EN/KO 확인·다시 외우기 가능.
 
-**백엔드 교체:** `js/store-api.js` 등에서 동일 메서드를 구현한 뒤, `storage.js` 로드 전에 `window.__APP_STORE__ = createApiStore(...)` 주입하거나 `createLocalStore()` 호출을 교체한다. UI 모듈은 수정하지 않는다.
+**백엔드:** 게스트는 localStorage. 로그인하면 프로젝트 `tongtongbaemter`(서울)에 저장.
+
+1. 프로젝트 URL/anon key는 `js/supabase-config.js`에 이미 들어 있음  
+2. 캠프면 Authentication → Providers → Email → **Confirm email 끄기**  
+3. 첫 가입 계정이 admin
+
+구현: `js/store-supabase.js`, `js/auth-supabase.js`, `js/supabase-boot.js`가 설정이 있을 때 `__APP_STORE__` / `__APP_AUTH__`를 주입한다.
 
 기존 localStorage 키(`earthsentence_*_v1`)는 LocalStore가 그대로 사용한다.
 
@@ -81,6 +87,8 @@ UI는 `window.AppStorage`만 호출한다. 영속 I/O는 전부 `Promise`를 반
 |------|-----------|------|
 | `js/domain.js` | `AppDomain` | 순수 도메인 로직 |
 | `js/store-local.js` | `createLocalStore` | localStorage AppDataStore |
+| `js/store-supabase.js` | `createSupabaseStore` | Supabase AppDataStore (로그인 시) |
+| `js/auth-supabase.js` | `createSupabaseAuth` | Supabase Auth |
 | `js/storage.js` | `AppStorage`, `AppTiers` | 데이터 파사드 + 티어/점수 |
 | `js/utils.js` | `AppUtils` | format / escape / normalize |
 | `js/parse.js` | `AppParse` | 영·한 파싱, 토큰, 힌트 |

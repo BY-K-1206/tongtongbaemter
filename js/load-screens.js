@@ -132,7 +132,7 @@
     }
   }
 
-  const APP_JS_VERSION = '20260814p';
+  const APP_JS_VERSION = '20260814s';
 
   async function boot() {
     try {

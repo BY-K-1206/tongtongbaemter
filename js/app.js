@@ -144,6 +144,9 @@
     btnOpenSettings: document.getElementById('btn-open-settings'),
     btnOpenLogin: document.getElementById('btn-open-login'),
     btnOpenAdmin: document.getElementById('btn-open-admin'),
+    homeGuestBanner: document.getElementById('home-guest-banner'),
+    homeGuestBannerText: document.getElementById('home-guest-banner-text'),
+    btnHomeGuestLogin: document.getElementById('btn-home-guest-login'),
     btnBackHomeFromSettings: document.getElementById('btn-back-home-from-settings'),
     settingsProviderToggles: document.getElementById('settings-provider-toggles'),
     settingsProviderPanels: document.getElementById('settings-provider-panels'),
@@ -151,6 +154,12 @@
     btnSaveTranslateSettings: document.getElementById('btn-save-translate-settings'),
     btnTestTranslateSettings: document.getElementById('btn-test-translate-settings'),
     settingsAccountStatus: document.getElementById('settings-account-status'),
+    settingsSupabaseUrl: document.getElementById('settings-supabase-url'),
+    settingsSupabaseAnon: document.getElementById('settings-supabase-anon'),
+    settingsSupabaseStatus: document.getElementById('settings-supabase-status'),
+    btnSaveSupabase: document.getElementById('btn-save-supabase'),
+    btnTestSupabase: document.getElementById('btn-test-supabase'),
+    btnClearSupabase: document.getElementById('btn-clear-supabase'),
     btnSettingsOpenLogin: document.getElementById('btn-settings-open-login'),
     btnSettingsOpenAdmin: document.getElementById('btn-settings-open-admin'),
     btnSettingsSignOut: document.getElementById('btn-settings-sign-out'),
@@ -159,6 +168,7 @@
     loginForm: document.getElementById('login-form'),
     loginEmail: document.getElementById('login-email'),
     loginPassword: document.getElementById('login-password'),
+    loginSeedHint: document.getElementById('login-seed-hint'),
     loginStatus: document.getElementById('login-status'),
     loginHeading: document.getElementById('login-heading'),
     loginSubtitle: document.getElementById('login-subtitle'),
@@ -268,6 +278,7 @@
       : null;
     const isAdmin = !!(window.AppAuth && window.AppAuth.isAdmin(session));
     const loggedIn = !!session;
+    const cloud = !!(window.AppSupabase && window.AppSupabase.isConfigured && window.AppSupabase.isConfigured());
 
     if (el.btnOpenAdmin) el.btnOpenAdmin.hidden = !isAdmin;
     if (el.btnOpenLogin) {
@@ -276,8 +287,16 @@
     }
     if (el.settingsAccountStatus) {
       el.settingsAccountStatus.textContent = loggedIn
-        ? `${session.email} · ${session.role}`
-        : '게스트 · 이 기기만 사용 중';
+        ? `${session.email} · ${session.role}${cloud ? ' · Supabase' : ''}`
+        : (cloud ? '게스트 · 로그인하면 Supabase에 저장됩니다' : '게스트 · 이 기기만 사용 중');
+    }
+    if (el.homeGuestBanner) {
+      el.homeGuestBanner.hidden = loggedIn;
+      if (!loggedIn && el.homeGuestBannerText) {
+        el.homeGuestBannerText.textContent = cloud
+          ? '학습 기록은 이 브라우저에만 저장됩니다. 로그인하면 클라우드에 모아 둘 수 있어요.'
+          : '학습 기록은 이 브라우저에만 저장됩니다.';
+      }
     }
     if (el.btnSettingsOpenLogin) {
       el.btnSettingsOpenLogin.textContent = loggedIn ? '계정 화면' : '로그인 / 가입';
@@ -666,6 +685,7 @@
   }
   el.btnOpenSettings.addEventListener('click', () => showScreen('settings'));
   el.btnOpenLogin?.addEventListener('click', () => showScreen('login'));
+  el.btnHomeGuestLogin?.addEventListener('click', () => showScreen('login'));
   el.btnOpenAdmin?.addEventListener('click', () => showScreen('admin'));
   el.btnBackHomeFromSettings.addEventListener('click', () => showScreen('home'));
   el.btnSettingsOpenLogin?.addEventListener('click', () => showScreen('login'));
@@ -702,6 +722,9 @@
     el.settingsProviderPanels.addEventListener('change', (e) => window.AppSettings.onPanelChange(ctx, e));
   }
   el.btnSaveTranslateSettings.addEventListener('click', () => window.AppSettings.save(ctx));
+  el.btnSaveSupabase?.addEventListener('click', () => window.AppSettings.saveSupabase(ctx));
+  el.btnTestSupabase?.addEventListener('click', () => window.AppSettings.testSupabase(ctx));
+  el.btnClearSupabase?.addEventListener('click', () => window.AppSettings.clearSupabase(ctx));
   el.btnTestTranslateSettings.addEventListener('click', () => window.AppSettings.test(ctx));
 
   el.inputFileUpload.addEventListener('change', (e) => {

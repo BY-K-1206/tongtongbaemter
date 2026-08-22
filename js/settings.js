@@ -246,10 +246,88 @@ window.AppSettings = (function () {
     if (row) row.hidden = select.value !== '__custom__';
   }
 
+  function showSupabaseStatus(ctx, message, kind) {
+    const el = ctx.el.settingsSupabaseStatus;
+    if (!el) return;
+    el.hidden = !message;
+    el.textContent = message || '';
+    el.className = kind === 'error'
+      ? 'error-text'
+      : kind === 'success'
+        ? 'success-text'
+        : 'info-text';
+  }
+
+  function fillSupabaseForm(ctx) {
+    const cfg = window.AppSupabase && window.AppSupabase.getConfig
+      ? (window.AppSupabase.getConfig() || { url: '', anonKey: '' })
+      : { url: '', anonKey: '' };
+    if (ctx.el.settingsSupabaseUrl) ctx.el.settingsSupabaseUrl.value = cfg.url || '';
+    if (ctx.el.settingsSupabaseAnon) ctx.el.settingsSupabaseAnon.value = cfg.anonKey || '';
+    if (window.AppSupabase && window.AppSupabase.isConfigured && window.AppSupabase.isConfigured()) {
+      showSupabaseStatus(ctx, '연결됨. 로그인하면 이 계정으로 클라우드에 저장됩니다.', 'success');
+    } else {
+      showSupabaseStatus(ctx, '아직 연결되지 않았어요. 게스트는 이 브라우저에만 저장됩니다.', 'info');
+    }
+  }
+
+  function saveSupabase(ctx) {
+    if (!window.AppSupabase || !window.AppSupabase.saveConfig) {
+      showSupabaseStatus(ctx, 'Supabase 모듈이 없습니다.', 'error');
+      return;
+    }
+    const url = ctx.el.settingsSupabaseUrl && ctx.el.settingsSupabaseUrl.value;
+    const anonKey = ctx.el.settingsSupabaseAnon && ctx.el.settingsSupabaseAnon.value;
+    if (!String(url || '').trim() || !String(anonKey || '').trim()) {
+      showSupabaseStatus(ctx, 'URL과 anon key를 모두 입력해 주세요.', 'error');
+      return;
+    }
+    window.AppSupabase.saveConfig(url, anonKey);
+    showSupabaseStatus(ctx, '저장했어요. 새로고침해서 연결을 켭니다…', 'success');
+    window.location.reload();
+  }
+
+  function clearSupabase(ctx) {
+    if (!window.AppSupabase || !window.AppSupabase.saveConfig) return;
+    window.AppSupabase.saveConfig('', '');
+    showSupabaseStatus(ctx, '연결을 해제했어요. 새로고침합니다…', 'success');
+    window.location.reload();
+  }
+
+  async function testSupabase(ctx) {
+    if (!window.AppSupabase) {
+      showSupabaseStatus(ctx, 'Supabase 모듈이 없습니다.', 'error');
+      return;
+    }
+    const url = ctx.el.settingsSupabaseUrl && ctx.el.settingsSupabaseUrl.value;
+    const anonKey = ctx.el.settingsSupabaseAnon && ctx.el.settingsSupabaseAnon.value;
+    if (!String(url || '').trim() || !String(anonKey || '').trim()) {
+      showSupabaseStatus(ctx, 'URL과 anon key를 입력해 주세요.', 'error');
+      return;
+    }
+    if (!window.supabase || !window.supabase.createClient) {
+      showSupabaseStatus(ctx, 'supabase-js가 로드되지 않았습니다.', 'error');
+      return;
+    }
+    showSupabaseStatus(ctx, '연결 확인 중…', 'info');
+    try {
+      const client = window.supabase.createClient(String(url).trim(), String(anonKey).trim());
+      const { error } = await client.from('app_settings').select('id').eq('id', 'global').maybeSingle();
+      if (error) {
+        showSupabaseStatus(ctx, error.message || '테이블을 읽지 못했어요. schema.sql을 실행했는지 확인해 주세요.', 'error');
+        return;
+      }
+      showSupabaseStatus(ctx, '연결 성공. 저장을 누르면 이 기기에 적용됩니다.', 'success');
+    } catch (err) {
+      showSupabaseStatus(ctx, (err && err.message) || '연결에 실패했습니다.', 'error');
+    }
+  }
+
   async function render(ctx) {
     const settings = await window.AppStorage.getTranslateSettings();
     renderToggles(ctx, settings);
     showStatus(ctx, '', 'info');
+    fillSupabaseForm(ctx);
   }
 
   async function save(ctx) {
@@ -294,6 +372,9 @@ window.AppSettings = (function () {
     render,
     save,
     test,
+    saveSupabase,
+    testSupabase,
+    clearSupabase,
     onToggleClick,
     onPanelChange,
     readForm,

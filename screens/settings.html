@@ -18,6 +18,25 @@
       </div>
     </div>
 
+    <div class="clay-panel" id="settings-supabase-panel">
+      <header id="settings-supabase-header">
+        <h1 id="settings-supabase-heading">Supabase 연결</h1>
+        <p id="settings-supabase-subtitle">프로젝트 URL과 anon key를 넣으면 로그인 계정의 지문·학습 기록이 클라우드에 저장됩니다. SQL은 <code>supabase/schema.sql</code>을 SQL Editor에 실행하세요.</p>
+      </header>
+      <label class="settings-field" for="settings-supabase-url">프로젝트 URL
+        <input type="url" id="settings-supabase-url" autocomplete="off" spellcheck="false" placeholder="https://xxxx.supabase.co">
+      </label>
+      <label class="settings-field" for="settings-supabase-anon">anon public key
+        <input type="text" id="settings-supabase-anon" autocomplete="off" spellcheck="false" placeholder="eyJhbGciOi...">
+      </label>
+      <p id="settings-supabase-status" class="info-text" hidden></p>
+      <div id="settings-supabase-actions">
+        <button type="button" class="btn btn-primary" id="btn-save-supabase">연결 저장</button>
+        <button type="button" class="btn btn-secondary" id="btn-test-supabase">연결 테스트</button>
+        <button type="button" class="btn btn-ghost" id="btn-clear-supabase">연결 해제</button>
+      </div>
+    </div>
+
     <div class="clay-panel" id="settings-panel">
       <header id="settings-header">
         <h1 id="settings-heading">번역 엔진</h1>

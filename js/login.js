@@ -29,9 +29,17 @@ window.AppLogin = (function () {
     } else if (ctx.el.loginHeading) {
       ctx.el.loginHeading.textContent = '로그인';
       if (ctx.el.loginSubtitle) {
-        ctx.el.loginSubtitle.textContent = '기기 간 동기화를 위해 로그인하세요. 지금은 이 브라우저에만 저장됩니다.';
+        ctx.el.loginSubtitle.textContent = window.AppSupabase && window.AppSupabase.isConfigured && window.AppSupabase.isConfigured()
+          ? '로그인하면 지문과 학습 기록이 Supabase에 저장됩니다.'
+          : '기기 간 동기화를 위해 로그인하세요. 지금은 이 브라우저에만 저장됩니다.';
       }
     }
+    const cloud = !!(window.AppSupabase && window.AppSupabase.isConfigured && window.AppSupabase.isConfigured());
+    if (ctx.el.loginPassword) {
+      ctx.el.loginPassword.placeholder = cloud ? '6자 이상' : '4자 이상';
+      ctx.el.loginPassword.minLength = cloud ? 6 : 4;
+    }
+    if (ctx.el.loginSeedHint) ctx.el.loginSeedHint.hidden = cloud;
   }
 
   async function submitLogin(ctx) {
