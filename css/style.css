@@ -297,6 +297,8 @@ body {
   height: var(--app-chrome-h);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   max-width: 900px;
   margin: 0 auto;
   padding: 0 20px;
@@ -349,6 +351,35 @@ body {
   border-radius: 50% 60% 45% 50%;
   background: var(--clay-blue-deep);
   border: 1px solid var(--clay-ink);
+}
+
+#app-chrome-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.app-chrome-link {
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  border: 0;
+  cursor: pointer;
+  padding: 7px 12px;
+  border-radius: var(--radius-btn);
+  background: transparent;
+  color: var(--clay-text-secondary);
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.app-chrome-link:hover {
+  background: rgba(184, 169, 212, 0.18);
+  color: var(--clay-text);
+}
+
+.app-chrome-link:active {
+  transform: scale(0.96);
 }
 
 #app-root {
@@ -2032,48 +2063,6 @@ h1, h2, h3,
   font-family: var(--font-display);
   color: var(--clay-text);
   flex: 1;
-}
-
-/* ---------- Top navbar ---------- */
-
-#home-navbar {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  background: var(--clay-surface);
-  border-radius: var(--radius-lg);
-  border: 1.5px solid var(--clay-border);
-  box-shadow: var(--clay-raised-sm);
-  padding: 12px 12px 12px 20px;
-  margin-bottom: 20px;
-}
-
-#home-navbar-links {
-  display: flex;
-  gap: 8px;
-}
-
-.home-navbar-link {
-  font-family: inherit;
-  font-size: 13.5px;
-  font-weight: 700;
-  border: 1.5px solid var(--clay-border);
-  cursor: pointer;
-  padding: 9px 16px;
-  border-radius: var(--radius-btn);
-  background: transparent;
-  color: var(--clay-blue-deep);
-  transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.home-navbar-link:hover {
-  background: var(--clay-blue-soft);
-  color: var(--ink-on-night);
-}
-
-.home-navbar-link:active {
-  transform: scale(0.96);
 }
 
 #home-guest-banner {
@@ -3881,17 +3870,8 @@ h1, h2, h3,
     width: 100%;
   }
 
-  #home-navbar {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    padding: 7px 8px 7px 12px;
-    margin-bottom: 8px;
-    border-radius: var(--radius-md);
-  }
-
-  .home-navbar-link {
-    padding: 6px 11px;
+  .app-chrome-link {
+    padding: 6px 9px;
     font-size: 12.5px;
   }
 

@@ -521,6 +521,19 @@
     goHomeFromLogo();
   });
 
+  async function goChromeScreen(name) {
+    if (state.currentScreen === name) return;
+    if (window.AppStudy && (window.AppStudy.isMarkSessionActive(ctx) || window.AppStudy.isSingleSessionActive(ctx))) {
+      const ok = await window.AppStudy.confirmLeaveMark(ctx);
+      if (!ok) return;
+      window.AppStudy.leaveMarkSession(ctx);
+    }
+    if (window.AppSingle && window.AppSingle.stopListening) {
+      window.AppSingle.stopListening(ctx);
+    }
+    await showScreen(name);
+  }
+
   // Single / vault — bind early so a later missing-node throw can't skip these.
   if (el.btnHeroSingle) {
     el.btnHeroSingle.addEventListener('click', () => window.AppSingle.openChat(ctx));
@@ -683,10 +696,10 @@
       window.AppRegister.setDifficultyStars(ctx, btn.dataset.stars);
     });
   }
-  el.btnOpenSettings.addEventListener('click', () => showScreen('settings'));
-  el.btnOpenLogin?.addEventListener('click', () => showScreen('login'));
-  el.btnHomeGuestLogin?.addEventListener('click', () => showScreen('login'));
-  el.btnOpenAdmin?.addEventListener('click', () => showScreen('admin'));
+  el.btnOpenSettings.addEventListener('click', () => goChromeScreen('settings'));
+  el.btnOpenLogin?.addEventListener('click', () => goChromeScreen('login'));
+  el.btnHomeGuestLogin?.addEventListener('click', () => goChromeScreen('login'));
+  el.btnOpenAdmin?.addEventListener('click', () => goChromeScreen('admin'));
   el.btnBackHomeFromSettings.addEventListener('click', () => showScreen('home'));
   el.btnSettingsOpenLogin?.addEventListener('click', () => showScreen('login'));
   el.btnSettingsOpenAdmin?.addEventListener('click', () => showScreen('admin'));
